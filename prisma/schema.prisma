@@ -1,0 +1,56 @@
+// Forma AI Opportunity Finder — Prisma Schema
+// This schema stores all assessment submissions and generated reports.
+//
+// TODO: Add lightweight admin view to browse/search submissions
+// (see README for details on the planned admin panel)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Submission {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Business identity
+  businessName String
+  industry     String
+  businessType String
+
+  // Assessment answers stored as raw JSON for flexibility
+  assessmentData Json
+
+  // Generated report stored as JSON
+  reportData Json?
+
+  // Optional lead capture (shown post-report)
+  contactName  String?
+  contactEmail String?
+
+  // Metadata for analytics and debugging
+  promptVersion   String       @default("v1")
+  modelUsed       String       @default("google/gemini-2.5-flash")
+  reportStatus    ReportStatus @default(PENDING)
+  ipAddress       String?
+  userAgent       String?
+
+  // Analytics events stored as JSON array
+  analyticsEvents Json @default("[]")
+
+  @@index([createdAt])
+  @@index([industry])
+  @@index([reportStatus])
+}
+
+enum ReportStatus {
+  PENDING
+  GENERATING
+  COMPLETE
+  FAILED
+}
