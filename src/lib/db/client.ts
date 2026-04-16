@@ -4,13 +4,15 @@
 // Cloudflare Workers without any native binaries.
 // ============================================================
 
+import { neon } from "@neondatabase/serverless";
 import { PrismaClient } from "@prisma/client";
 import { PrismaNeonHTTP } from "@prisma/adapter-neon";
 
 function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL;
   if (!connectionString) throw new Error("DATABASE_URL is not set");
-  const adapter = new PrismaNeonHTTP(connectionString);
+  const sql = neon(connectionString);
+  const adapter = new PrismaNeonHTTP(sql);
   return new PrismaClient({ adapter });
 }
 
