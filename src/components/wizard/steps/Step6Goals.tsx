@@ -81,7 +81,7 @@ export function Step6Goals({ onBack, onNext, isLoading }: Props) {
         htmlFor="growthGoals"
         required
         error={errors.growthGoals?.message}
-        hint="Revenue targets, team growth, new services, market expansion — anything goes"
+        hint="Revenue targets, team growth, new services, market expansion. Anything goes."
       >
         <Textarea
           id="growthGoals"
@@ -125,7 +125,7 @@ export function Step6Goals({ onBack, onNext, isLoading }: Props) {
       <FormField
         label="Which AI tools do you currently use?"
         htmlFor="aiToolsUsed"
-        hint="Even casual use counts — ChatGPT, Copilot, Midjourney, etc."
+        hint="Even casual use counts: ChatGPT, Copilot, Midjourney, etc."
       >
         <Textarea
           id="aiToolsUsed"

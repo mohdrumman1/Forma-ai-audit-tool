@@ -5,8 +5,11 @@ import type { FullAssessmentInput } from "@/lib/schemas";
 interface AssessmentStore {
   currentStep: number;
   data: Partial<FullAssessmentInput>;
+  contactName: string;
+  contactEmail: string;
   setStep: (step: number) => void;
   updateData: (update: Partial<FullAssessmentInput>) => void;
+  setContact: (name: string, email: string) => void;
   reset: () => void;
 }
 
@@ -22,10 +25,13 @@ export const useAssessmentStore = create<AssessmentStore>()(
     (set) => ({
       currentStep: 1,
       data: defaultData,
+      contactName: "",
+      contactEmail: "",
       setStep: (step) => set({ currentStep: step }),
       updateData: (update) =>
         set((state) => ({ data: { ...state.data, ...update } })),
-      reset: () => set({ currentStep: 1, data: defaultData }),
+      setContact: (contactName, contactEmail) => set({ contactName, contactEmail }),
+      reset: () => set({ currentStep: 1, data: defaultData, contactName: "", contactEmail: "" }),
     }),
     {
       name: "forma-assessment",

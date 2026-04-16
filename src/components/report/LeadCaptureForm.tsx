@@ -67,7 +67,7 @@ export function LeadCaptureForm({ submissionId }: LeadCaptureFormProps) {
         </div>
         <div>
           <h3 className="text-white font-bold text-lg">Get a copy of your report</h3>
-          <p className="text-slate-500 text-xs">Optional — no obligation</p>
+          <p className="text-slate-500 text-xs">Optional. No obligation.</p>
         </div>
       </div>
 

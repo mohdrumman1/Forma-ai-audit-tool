@@ -11,9 +11,10 @@ interface Step {
 interface WizardProgressProps {
   steps: Step[];
   currentStep: number;
+  onStepClick?: (step: number) => void;
 }
 
-export function WizardProgress({ steps, currentStep }: WizardProgressProps) {
+export function WizardProgress({ steps, currentStep, onStepClick }: WizardProgressProps) {
   const progress = ((currentStep - 1) / (steps.length - 1)) * 100;
 
   return (
@@ -23,18 +24,20 @@ export function WizardProgress({ steps, currentStep }: WizardProgressProps) {
         {steps.map((step) => {
           const isCompleted = step.number < currentStep;
           const isActive = step.number === currentStep;
+          const isClickable = isCompleted && !!onStepClick;
 
           return (
             <div
               key={step.number}
-              className="flex flex-col items-center"
+              className={cn("flex flex-col items-center", isClickable && "cursor-pointer group")}
               style={{ flex: "1 1 0%", maxWidth: `${100 / steps.length}%` }}
+              onClick={isClickable ? () => onStepClick(step.number) : undefined}
             >
               <div
                 className={cn(
                   "h-8 w-8 rounded-full flex items-center justify-center text-sm font-semibold border-2 transition-all duration-300 z-10",
                   isCompleted
-                    ? "bg-brand-600 border-brand-600 text-white"
+                    ? "bg-brand-600 border-brand-600 text-white group-hover:bg-brand-500 group-hover:border-brand-400"
                     : isActive
                     ? "bg-brand-600/20 border-brand-500 text-brand-300"
                     : "bg-surface-muted border-white/10 text-slate-500"
@@ -50,7 +53,7 @@ export function WizardProgress({ steps, currentStep }: WizardProgressProps) {
                 className={cn(
                   "text-xs mt-1.5 font-medium text-center hidden sm:block",
                   isCompleted
-                    ? "text-brand-400"
+                    ? "text-brand-400 group-hover:text-brand-300"
                     : isActive
                     ? "text-white"
                     : "text-slate-600"

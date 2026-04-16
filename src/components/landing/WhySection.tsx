@@ -5,7 +5,7 @@ const leaks = [
     icon: Clock,
     title: "Time buried in manual admin",
     description:
-      "Your team is spending hours every week on tasks that AI can handle in seconds — data entry, scheduling, follow-ups, document processing.",
+      "Your team is spending hours every week on tasks that AI can handle in seconds: data entry, scheduling, follow-ups, document processing.",
     stat: "15–25 hrs/week",
     statLabel: "lost to repetitive tasks",
   },
@@ -29,7 +29,7 @@ const leaks = [
     icon: AlertTriangle,
     title: "Errors costing you clients and credibility",
     description:
-      "Manual processes mean human error. Missed deadlines, incorrect data, inconsistent communication — every mistake has a real financial cost.",
+      "Manual processes mean human error. Missed deadlines, incorrect data, inconsistent communication. Every mistake has a real financial cost.",
     stat: "3–8%",
     statLabel: "revenue impact from process errors",
   },
@@ -49,7 +49,7 @@ export function WhySection() {
             <span className="text-slate-400">without knowing it</span>
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            The inefficiencies are invisible — until someone maps them out. That&apos;s
+            The inefficiencies are invisible until someone maps them out. That&apos;s
             exactly what the Forma AI Opportunity Finder does.
           </p>
         </div>

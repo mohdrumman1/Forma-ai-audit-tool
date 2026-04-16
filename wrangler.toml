@@ -1,0 +1,16 @@
+name = "forma-ai-audit-tool"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".open-next/assets"
+
+# Runtime environment variables are set in the Cloudflare Pages dashboard
+# under Settings > Environment variables (not here -- keeps secrets out of git).
+#
+# Required variables to add in the dashboard:
+#   DATABASE_URL         -- your Neon PostgreSQL connection string
+#   OPENROUTER_API_KEY   -- your OpenRouter API key
+#   OPENROUTER_MODEL     -- google/gemini-2.5-flash
+#   FORMA_AI_WEBSITE_URL -- https://formaai.info
+
+[vars]
+NEXT_PUBLIC_FORMA_AI_WEBSITE_URL = "https://formaai.info"

@@ -1,5 +1,5 @@
 // ============================================================
-// Forma AI — PDF Report Generator
+// Forma AI | PDF Report Generator
 // Client-side only. Uses jsPDF for generation.
 // ============================================================
 
@@ -66,7 +66,7 @@ export async function generatePDF(
     // Page footer
     doc.setFontSize(8);
     doc.setTextColor(...TEXT_MUTED);
-    doc.text(`Forma AI — AI Opportunity Report — ${FORMA_WEBSITE}`, margin, pageH - 10);
+    doc.text(`Forma AI | AI Opportunity Report | ${FORMA_WEBSITE}`, margin, pageH - 10);
     doc.text(`${businessName}`, pageW - margin, pageH - 10, { align: "right" });
   };
 
@@ -204,7 +204,7 @@ export async function generatePDF(
 
   // Page footer
   doc.setFont("helvetica", "normal");
-  doc.text(`Forma AI — ${FORMA_WEBSITE}`, pageW / 2, pageH - 12, { align: "center" });
+  doc.text(`Forma AI | ${FORMA_WEBSITE}`, pageW / 2, pageH - 12, { align: "center" });
 
   // ============================================================
   // PAGE 2: Executive Summary + Cost Leaks

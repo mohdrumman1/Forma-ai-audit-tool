@@ -1,5 +1,5 @@
 // ============================================================
-// Forma AI Opportunity Finder — Assessment Types
+// Forma AI Opportunity Finder | Assessment Types
 // ============================================================
 
 export type TeamSize =

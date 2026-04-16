@@ -1,5 +1,6 @@
 import type { HiddenCostLeak } from "@/types/report";
 import { Badge } from "@/components/ui/badge";
+import { ProseText } from "./ProseText";
 import { AlertTriangle, AlertCircle, Info } from "lucide-react";
 
 interface CostLeakCardProps {
@@ -58,20 +59,20 @@ export function CostLeakCard({ leak }: CostLeakCardProps) {
               {leak.severity.charAt(0).toUpperCase() + leak.severity.slice(1)}
             </Badge>
           </div>
-          <p className="text-slate-400 text-sm mb-3">{leak.explanation}</p>
+          <ProseText text={leak.explanation} className="text-slate-400 text-sm mb-3" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             <div>
               <p className="text-slate-600 uppercase tracking-wide mb-1">Likely Source</p>
-              <p className="text-slate-300">{leak.likelySource}</p>
+              <ProseText text={leak.likelySource} className="text-slate-300" />
             </div>
             <div>
               <p className="text-slate-600 uppercase tracking-wide mb-1">Financial Impact</p>
-              <p className="text-slate-300">{leak.financialImpactType}</p>
+              <ProseText text={leak.financialImpactType} className="text-slate-300" />
             </div>
           </div>
           <div className="mt-3 pt-3 border-t border-white/5">
             <p className="text-slate-600 text-xs uppercase tracking-wide mb-1">Suggested Fix</p>
-            <p className="text-slate-300 text-sm">{leak.suggestedFix}</p>
+            <ProseText text={leak.suggestedFix} className="text-slate-300 text-sm" />
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { RoadmapTimeline } from "./RoadmapTimeline";
 import { ReportCTA } from "./ReportCTA";
 import { LeadCaptureForm } from "./LeadCaptureForm";
 import { Badge } from "@/components/ui/badge";
+import { ProseText } from "./ProseText";
 import { Info, FileText } from "lucide-react";
 import { format } from "date-fns";
 
@@ -52,7 +53,7 @@ export function ReportDashboard({
       <div className="hidden print:block print:p-8 print:bg-white print:text-black">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Forma AI — Opportunity Report</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Forma AI | Opportunity Report</h1>
             <p className="text-gray-500 text-sm">{businessName} · {industry} · {formattedDate}</p>
           </div>
           <div className="text-sm text-gray-400">formaai.info</div>
@@ -85,14 +86,10 @@ export function ReportDashboard({
           {/* Executive Summary */}
           <Section title="Executive Summary">
             <div className="rounded-xl border border-white/10 bg-white/5 p-6">
-              <p className="text-slate-300 leading-relaxed text-base">
-                {report.executiveSummary}
-              </p>
+              <ProseText text={report.executiveSummary} className="text-slate-300 leading-relaxed text-base" />
             </div>
             <div className="mt-4 rounded-xl border border-white/5 bg-white/3 p-4">
-              <p className="text-slate-400 text-sm leading-relaxed">
-                {report.businessSnapshot}
-              </p>
+              <ProseText text={report.businessSnapshot} className="text-slate-400 text-sm leading-relaxed" />
             </div>
           </Section>
 
@@ -173,7 +170,7 @@ export function ReportDashboard({
                   {report.assumptions.map((assumption, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-slate-400">
                       <span className="text-brand-500 shrink-0 mt-0.5">•</span>
-                      {assumption}
+                      <ProseText text={assumption} />
                     </li>
                   ))}
                 </ul>
@@ -185,7 +182,7 @@ export function ReportDashboard({
                     {report.confidenceNotes.map((note, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-slate-400">
                         <span className="text-slate-500 shrink-0">ℹ</span>
-                        {note}
+                        <ProseText text={note} />
                       </li>
                     ))}
                   </ul>
@@ -193,7 +190,7 @@ export function ReportDashboard({
               )}
               <div className="pt-3 border-t border-white/5">
                 <h4 className="text-sm font-semibold text-white mb-2">Recommended Next Steps</h4>
-                <p className="text-slate-400 text-sm">{report.nextSteps}</p>
+                <ProseText text={report.nextSteps} className="text-slate-400 text-sm" />
               </div>
             </div>
           </Section>

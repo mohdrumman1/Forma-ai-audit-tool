@@ -5,9 +5,8 @@ import {
   createSubmission,
   updateSubmissionWithReport,
   markSubmissionFailed,
+  countRecentSubmissions,
 } from "@/lib/db";
-
-export const maxDuration = 120; // Allow up to 2 minutes for AI generation
 
 export async function POST(req: NextRequest) {
   let submissionId: string | null = null;
@@ -27,7 +26,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { assessment } = validation.data;
+    const { assessment, contactName, contactEmail } = validation.data;
 
     // Extract request metadata for analytics
     const ipAddress =
@@ -36,8 +35,21 @@ export async function POST(req: NextRequest) {
       "unknown";
     const userAgent = req.headers.get("user-agent") ?? "unknown";
 
+    // IP rate limit: max 3 reports per IP per 24 hours
+    // Set DISABLE_RATE_LIMIT=true in .env.local to bypass during testing
+    const rateLimitDisabled = process.env.DISABLE_RATE_LIMIT === "true";
+    if (!rateLimitDisabled && ipAddress !== "unknown") {
+      const recentCount = await countRecentSubmissions(ipAddress);
+      if (recentCount >= 3) {
+        return NextResponse.json(
+          { error: "You've generated a few reports today. Please try again tomorrow." },
+          { status: 429 }
+        );
+      }
+    }
+
     // Create submission record in DB (persists even if AI fails)
-    submissionId = await createSubmission(assessment, ipAddress, userAgent);
+    submissionId = await createSubmission(assessment, contactName, contactEmail, ipAddress, userAgent);
 
     // Generate report via OpenRouter
     const { report, modelUsed, promptVersion } =

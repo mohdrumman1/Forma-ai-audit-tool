@@ -1,5 +1,5 @@
 // ============================================================
-// Forma AI — Submission Database Helpers
+// Forma AI | Submission Database Helpers
 // ============================================================
 
 import { prisma } from "./client";
@@ -8,6 +8,8 @@ import type { GeneratedReport } from "@/types/report";
 
 export async function createSubmission(
   assessment: FullAssessmentInput,
+  contactName?: string,
+  contactEmail?: string,
   ipAddress?: string,
   userAgent?: string
 ): Promise<string> {
@@ -18,11 +20,22 @@ export async function createSubmission(
       businessType: assessment.businessType,
       assessmentData: assessment as object,
       reportStatus: "PENDING",
+      contactName: contactName ?? null,
+      contactEmail: contactEmail ?? null,
       ipAddress,
       userAgent,
     },
   });
   return submission.id;
+}
+
+export async function countRecentSubmissions(ipAddress: string): Promise<number> {
+  return prisma.submission.count({
+    where: {
+      ipAddress,
+      createdAt: { gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
+    },
+  });
 }
 
 export async function updateSubmissionWithReport(

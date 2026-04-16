@@ -42,7 +42,7 @@ export function Step5PainPoints({ onBack, onNext }: Props) {
   return (
     <StepWrapper
       title="Pain points & hidden costs"
-      subtitle="This is where most of the financial upside gets uncovered. Be honest — there are no wrong answers."
+      subtitle="This is where most of the financial upside gets uncovered. Be honest. There are no wrong answers."
       onBack={onBack}
       onNext={submit}
     >
@@ -107,7 +107,7 @@ export function Step5PainPoints({ onBack, onNext }: Props) {
       <FormField
         label="Where do you think your business is leaking money?"
         htmlFor="moneyLeakageAreas"
-        hint="Your gut instinct here is valuable — even if you can't quantify it"
+        hint="Your gut instinct here is valuable, even if you can't quantify it"
       >
         <Textarea
           id="moneyLeakageAreas"

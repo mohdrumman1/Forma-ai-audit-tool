@@ -1,5 +1,6 @@
 import type { RoadmapPhase } from "@/types/report";
 import { ArrowRight } from "lucide-react";
+import { ProseText } from "./ProseText";
 
 interface RoadmapTimelineProps {
   phases: RoadmapPhase[];
@@ -58,16 +59,14 @@ export function RoadmapTimeline({ phases }: RoadmapTimelineProps) {
 
               {/* Content */}
               <h3 className="text-white font-semibold text-sm mb-2">{phase.title}</h3>
-              <p className="text-slate-500 text-xs mb-2">{phase.objective}</p>
-              <p className="text-slate-400 text-xs leading-relaxed flex-1 mb-3">
-                {phase.description}
-              </p>
+              <ProseText text={phase.objective} className="text-slate-500 text-xs mb-2" />
+              <ProseText text={phase.description} className="text-slate-400 text-xs leading-relaxed flex-1 mb-3" />
 
               {/* Business value */}
               <div className="pt-3 border-t border-white/5">
                 <div className="flex items-center gap-1.5 text-xs text-emerald-400">
                   <ArrowRight className="h-3 w-3 shrink-0" />
-                  <span>{phase.expectedBusinessValue}</span>
+                  <ProseText text={phase.expectedBusinessValue} />
                 </div>
               </div>
             </div>

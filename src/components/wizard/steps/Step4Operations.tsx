@@ -38,7 +38,7 @@ export function Step4Operations({ onBack, onNext }: Props) {
   return (
     <StepWrapper
       title="Operations & workflows"
-      subtitle="Help us understand how your day-to-day operations work. You don't need to be detailed — rough descriptions are fine."
+      subtitle="Help us understand how your day-to-day operations work. Rough descriptions are fine."
       onBack={onBack}
       onNext={submit}
     >
@@ -101,7 +101,7 @@ export function Step4Operations({ onBack, onNext }: Props) {
       >
         <Textarea
           id="internalReportingProcess"
-          placeholder="e.g. We do a weekly team meeting with a manually updated spreadsheet. No real reporting dashboard — the owner checks everything ad hoc..."
+          placeholder="e.g. We do a weekly team meeting with a manually updated spreadsheet. No real reporting dashboard. The owner checks everything ad hoc..."
           rows={3}
           {...register("internalReportingProcess")}
         />

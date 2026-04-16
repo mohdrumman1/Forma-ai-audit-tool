@@ -5,13 +5,13 @@ const reasons = [
     icon: Target,
     title: "Commercially sharp analysis",
     description:
-      "We don't give you vague AI buzzwords. Every insight is tied to a real financial outcome — revenue, cost, or time.",
+      "We don't give you vague AI buzzwords. Every insight is tied to a real financial outcome: revenue, cost, or time.",
   },
   {
     icon: Shield,
     title: "Strategy-first, not tool-first",
     description:
-      "We identify the opportunities first. Then we identify the right AI to address them — not the other way around.",
+      "We identify the opportunities first. Then we identify the right AI to address them, not the other way around.",
   },
   {
     icon: Clock,
@@ -44,12 +44,12 @@ export function WhyFormaAI() {
             </h2>
             <p className="text-lg text-slate-400 leading-relaxed mb-8">
               Most AI consultants either over-promise on outcomes or under-deliver on
-              execution. Forma AI bridges that gap — combining strategic analysis with
+              execution. Forma AI bridges that gap, combining strategic analysis with
               practical, working AI implementations.
             </p>
             <p className="text-slate-400 leading-relaxed">
               This free assessment is the same diagnostic process we use with paying
-              clients — just compressed into a 5-minute self-serve tool. Use it to
+              clients, just compressed into a 5-minute self-serve tool. Use it to
               understand your opportunity, then talk to us about making it real.
             </p>
           </div>

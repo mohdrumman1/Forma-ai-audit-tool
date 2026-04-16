@@ -13,7 +13,7 @@ const steps = [
     icon: Cpu,
     title: "AI analyses your business",
     description:
-      "Our AI engine — trained to think like a strategy and operations consultant — maps your workflows, identifies inefficiencies, and quantifies your financial upside.",
+      "Our AI engine, trained to think like a strategy and operations consultant, maps your workflows, identifies inefficiencies, and quantifies your financial upside.",
   },
   {
     number: "03",
@@ -37,7 +37,7 @@ export function HowItWorks() {
           </h2>
           <p className="text-lg text-slate-400 max-w-xl mx-auto">
             No forms to fill out for a salesperson. No waiting days for a proposal.
-            Instant, actionable insight — tailored to your specific business.
+            Instant, actionable insight tailored to your specific business.
           </p>
         </div>
 

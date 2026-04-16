@@ -3,10 +3,11 @@ import { getSubmission } from "@/lib/db";
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const submission = await getSubmission(params.id);
+    const { id } = await params;
+    const submission = await getSubmission(id);
 
     if (!submission) {
       return NextResponse.json({ error: "Report not found" }, { status: 404 });

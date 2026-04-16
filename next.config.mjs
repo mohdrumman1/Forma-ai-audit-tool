@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    serverComponentsExternalPackages: ["@prisma/client", "prisma"],
+  // Prisma is bundled via the Neon HTTP adapter (pure JS).
+  // No native binaries -- works in Node.js and Cloudflare Workers.
+  eslint: {
+    // ESLint runs separately in CI -- skip during next build to avoid version conflicts.
+    ignoreDuringBuilds: true,
   },
 };
 

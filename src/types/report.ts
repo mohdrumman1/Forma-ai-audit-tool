@@ -1,5 +1,5 @@
 // ============================================================
-// Forma AI Opportunity Finder — Report Types
+// Forma AI Opportunity Finder | Report Types
 // ============================================================
 
 export interface HiddenCostLeak {

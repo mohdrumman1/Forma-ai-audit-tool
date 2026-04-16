@@ -9,6 +9,7 @@ import { Step3LeadSales } from "./steps/Step3LeadSales";
 import { Step4Operations } from "./steps/Step4Operations";
 import { Step5PainPoints } from "./steps/Step5PainPoints";
 import { Step6Goals } from "./steps/Step6Goals";
+import { Step7Contact, type ContactInput } from "./steps/Step7Contact";
 import { useAssessmentStore } from "@/stores/assessmentStore";
 import { AlertCircle } from "lucide-react";
 
@@ -19,26 +20,35 @@ const STEPS = [
   { number: 4, label: "Operations" },
   { number: 5, label: "Pain Points" },
   { number: 6, label: "Goals" },
+  { number: 7, label: "Get Report" },
 ];
 
 export function AssessmentWizard() {
   const router = useRouter();
-  const { currentStep, setStep, data, reset } = useAssessmentStore();
+  const { currentStep, setStep, reset, contactName, contactEmail, setContact } = useAssessmentStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const goBack = () => setStep(Math.max(1, currentStep - 1));
   const goNext = () => setStep(Math.min(STEPS.length, currentStep + 1));
 
-  const handleFinalSubmit = async () => {
+  const handleFinalSubmit = async (contact: ContactInput) => {
     setIsSubmitting(true);
     setError(null);
+    setContact(contact.contactName, contact.contactEmail);
 
     try {
+      // Read latest store state directly, avoiding stale closure from React render snapshot
+      const latestData = useAssessmentStore.getState().data;
+
       const response = await fetch("/api/assess", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ assessment: data }),
+        body: JSON.stringify({
+          assessment: latestData,
+          contactName: contact.contactName,
+          contactEmail: contact.contactEmail,
+        }),
       });
 
       const result = await response.json();
@@ -75,7 +85,7 @@ export function AssessmentWizard() {
 
         {/* Progress */}
         <div className="mb-10">
-          <WizardProgress steps={STEPS} currentStep={currentStep} />
+          <WizardProgress steps={STEPS} currentStep={currentStep} onStepClick={setStep} />
         </div>
 
         {/* Error state */}
@@ -97,27 +107,24 @@ export function AssessmentWizard() {
           {currentStep === 4 && <Step4Operations onBack={goBack} onNext={goNext} />}
           {currentStep === 5 && <Step5PainPoints onBack={goBack} onNext={goNext} />}
           {currentStep === 6 && (
-            <Step6Goals
+            <Step6Goals onBack={goBack} onNext={goNext} isLoading={false} />
+          )}
+          {currentStep === 7 && (
+            <Step7Contact
               onBack={goBack}
-              onNext={handleFinalSubmit}
+              onSubmit={handleFinalSubmit}
               isLoading={isSubmitting}
+              defaultValues={{ contactName, contactEmail }}
             />
           )}
         </div>
 
-        {/* Loading overlay text */}
-        {isSubmitting && (
-          <div className="mt-6 text-center">
-            <p className="text-slate-400 text-sm animate-pulse">
-              Our AI is analysing your business — this takes 30–60 seconds...
-            </p>
-          </div>
-        )}
-
         {/* Privacy note */}
-        <p className="text-center text-xs text-slate-600 mt-6">
-          Your information is used only to generate your report. No spam, no obligation.
-        </p>
+        {currentStep < 7 && (
+          <p className="text-center text-xs text-slate-600 mt-6">
+            Your information is used only to generate your report. No spam, no obligation.
+          </p>
+        )}
       </div>
     </div>
   );

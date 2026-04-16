@@ -1,6 +1,7 @@
 import type { QuickWin } from "@/types/report";
 import { Zap, CheckCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ProseText } from "./ProseText";
 
 interface QuickWinsListProps {
   quickWins: QuickWin[];
@@ -30,10 +31,10 @@ export function QuickWinsList({ quickWins }: QuickWinsListProps) {
                 <h3 className="text-white font-semibold text-sm">{win.title}</h3>
                 <Badge variant={ease.variant}>{ease.label}</Badge>
               </div>
-              <p className="text-slate-400 text-sm mb-2">{win.action}</p>
+              <ProseText text={win.action} className="text-slate-400 text-sm mb-2" />
               <div className="flex items-center gap-2 text-xs text-emerald-400">
-                <CheckCircle className="h-3.5 w-3.5" />
-                {win.expectedBenefit}
+                <CheckCircle className="h-3.5 w-3.5 shrink-0" />
+                <ProseText text={win.expectedBenefit} />
               </div>
             </div>
           </div>

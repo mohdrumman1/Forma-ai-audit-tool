@@ -27,7 +27,7 @@ export function HeroSection() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-600/10 px-4 py-1.5 text-sm text-brand-300 mb-8">
           <Zap className="h-3.5 w-3.5 text-brand-400" />
-          Free AI Opportunity Report — No login required
+          Free AI Opportunity Report. No login required.
         </div>
 
         {/* Headline */}
@@ -48,7 +48,7 @@ export function HeroSection() {
         {/* Subheadline */}
         <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
           In 5 minutes, Forma AI will identify your hidden inefficiencies, quantify
-          your financial upside, and reveal exactly where AI can save — and make — you money.
+          your financial upside, and reveal exactly where AI can save you money and make you more.
         </p>
 
         {/* Stats row */}
@@ -92,7 +92,7 @@ export function HeroSection() {
 
         {/* Social proof hint */}
         <p className="mt-8 text-sm text-slate-600">
-          Forma AI — AI strategy and automation for ambitious businesses
+          Forma AI | AI strategy and automation for ambitious businesses
         </p>
       </div>
 

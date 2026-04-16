@@ -6,6 +6,7 @@ import type { AIRecommendation } from "@/types/report";
 import { Badge } from "@/components/ui/badge";
 import { ScoreBar } from "./ScoreBar";
 import { cn } from "@/lib/utils";
+import { ProseText } from "./ProseText";
 
 interface RecommendationCardProps {
   recommendation: AIRecommendation;
@@ -58,15 +59,15 @@ export function RecommendationCard({ recommendation: rec, index }: Recommendatio
             <div className="space-y-4">
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Current Problem</p>
-                <p className="text-sm text-slate-300">{rec.currentProblem}</p>
+                <ProseText text={rec.currentProblem} className="text-sm text-slate-300" />
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Why It&apos;s Costing You</p>
-                <p className="text-sm text-slate-300">{rec.whyCosting}</p>
+                <ProseText text={rec.whyCosting} className="text-sm text-slate-300" />
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Recommended AI Use Case</p>
-                <p className="text-sm text-white">{rec.recommendedUseCase}</p>
+                <ProseText text={rec.recommendedUseCase} className="text-sm text-white" />
               </div>
             </div>
 
@@ -74,7 +75,7 @@ export function RecommendationCard({ recommendation: rec, index }: Recommendatio
             <div className="space-y-4">
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Example Implementation</p>
-                <p className="text-sm text-slate-300 italic">{rec.exampleImplementation}</p>
+                <ProseText text={rec.exampleImplementation} className="text-sm text-slate-300 italic" />
               </div>
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-2">Scores</p>
@@ -86,7 +87,7 @@ export function RecommendationCard({ recommendation: rec, index }: Recommendatio
               </div>
               <div className="rounded-lg bg-brand-600/10 border border-brand-500/20 p-3">
                 <p className="text-xs text-brand-300 font-semibold mb-1">Why It Matters</p>
-                <p className="text-xs text-slate-400">{rec.whyItMatters}</p>
+                <ProseText text={rec.whyItMatters} className="text-xs text-slate-400" />
               </div>
             </div>
           </div>

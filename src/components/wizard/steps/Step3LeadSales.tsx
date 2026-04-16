@@ -82,7 +82,7 @@ export function Step3LeadSales({ onBack, onNext }: Props) {
         htmlFor="followUpProcess"
         required
         error={errors.followUpProcess?.message}
-        hint="Describe what happens after a lead comes in — who does what, and how quickly?"
+        hint="Describe what happens after a lead comes in. Who does what, and how quickly?"
       >
         <Textarea
           id="followUpProcess"
@@ -97,7 +97,7 @@ export function Step3LeadSales({ onBack, onNext }: Props) {
         htmlFor="salesProcess"
         required
         error={errors.salesProcess?.message}
-        hint="From first contact to signed/converted client — what are the steps?"
+        hint="From first contact to signed/converted client: what are the steps?"
       >
         <Textarea
           id="salesProcess"

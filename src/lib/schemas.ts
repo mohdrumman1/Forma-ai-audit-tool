@@ -147,6 +147,8 @@ export type GeneratedReportInput = z.infer<typeof GeneratedReportSchema>;
 
 export const GenerateReportRequestSchema = z.object({
   assessment: FullAssessmentSchema,
+  contactName: z.string().min(1).optional(),
+  contactEmail: z.string().email().optional(),
 });
 
 export const LeadCaptureSchema = z.object({

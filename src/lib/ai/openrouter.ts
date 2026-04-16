@@ -1,5 +1,5 @@
 // ============================================================
-// Forma AI — OpenRouter Service Layer
+// Forma AI | OpenRouter Service Layer
 // Server-side only. Never import from client components.
 // ============================================================
 
@@ -76,7 +76,7 @@ export async function generateOpportunityReport(
         { role: "user", content: userPrompt },
       ],
       temperature: 0.7,
-      max_tokens: 8000,
+      max_tokens: 5000,
     });
 
     rawContent = completion.choices[0]?.message?.content ?? "";
@@ -104,7 +104,7 @@ export async function generateOpportunityReport(
   const result = GeneratedReportSchema.safeParse(parsed);
   if (!result.success) {
     console.error("[AI] Schema validation failed:", result.error.flatten());
-    // Attempt partial recovery — if numbers are missing, try to coerce
+    // Attempt partial recovery. If numbers are missing, try to coerce.
     const partial = parsed as Record<string, unknown>;
     if (!partial.totalEstimatedSavings && partial.estimatedAnnualValue) {
       partial.totalEstimatedSavings = partial.estimatedAnnualValue;

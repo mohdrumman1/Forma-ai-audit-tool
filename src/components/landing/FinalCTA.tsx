@@ -20,7 +20,7 @@ export function FinalCTA() {
         </h2>
         <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto">
           5 minutes. No login. No credit card. Just a tailored, consultant-grade
-          analysis of where AI can transform your business — instantly.
+          analysis of where AI can transform your business, instantly.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -44,7 +44,7 @@ export function FinalCTA() {
         </div>
 
         <p className="mt-8 text-sm text-slate-600">
-          Forma AI — AI strategy and automation for ambitious businesses
+          Forma AI | AI strategy and automation for ambitious businesses
         </p>
       </div>
     </section>

@@ -18,7 +18,7 @@ const insights = [
     label: "Hidden Cost Leak",
     title: "Slow lead follow-up is costing you conversions",
     description:
-      "Response times over 1 hour reduce conversion rates by up to 60%. An AI-powered lead response system can respond within seconds, qualify the lead, and book a call — 24/7, with no human required.",
+      "Response times over 1 hour reduce conversion rates by up to 60%. An AI-powered lead response system can respond within seconds, qualify the lead, and book a call 24/7 with no human required.",
     upside: "$25,000–$50,000/yr",
   },
   {

@@ -5,21 +5,23 @@ import { ReportDashboard } from "@/components/report/ReportDashboard";
 import type { GeneratedReport } from "@/types/report";
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const submission = await getSubmission(params.id).catch(() => null);
-  if (!submission) return { title: "Report Not Found — Forma AI" };
+  const { id } = await params;
+  const submission = await getSubmission(id).catch(() => null);
+  if (!submission) return { title: "Report Not Found | Forma AI" };
 
   return {
-    title: `AI Opportunity Report — ${submission.businessName} | Forma AI`,
+    title: `AI Opportunity Report for ${submission.businessName} | Forma AI`,
     description: `Your tailored AI opportunity report from Forma AI. Discover hidden cost savings and automation opportunities for ${submission.businessName}.`,
   };
 }
 
 export default async function ReportPage({ params }: PageProps) {
-  const submission = await getSubmission(params.id).catch(() => null);
+  const { id } = await params;
+  const submission = await getSubmission(id).catch(() => null);
 
   if (!submission || submission.reportStatus !== "COMPLETE" || !submission.reportData) {
     notFound();
