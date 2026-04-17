@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from "next/server";
 import { GenerateReportRequestSchema } from "@/lib/schemas";
 import { generateOpportunityReport } from "@/lib/ai";

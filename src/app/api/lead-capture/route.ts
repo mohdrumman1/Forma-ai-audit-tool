@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from "next/server";
 import { LeadCaptureSchema } from "@/lib/schemas";
 import { updateLeadCapture, getSubmission } from "@/lib/db";

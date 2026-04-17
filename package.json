@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:cf": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/assets/_worker.js",
+    "build:cf": "next-on-pages",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
@@ -51,7 +51,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.1",
+    "@cloudflare/next-on-pages": "^1",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22",
     "@types/react": "^18",
