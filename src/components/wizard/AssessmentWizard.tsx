@@ -30,7 +30,10 @@ export function AssessmentWizard() {
   const [error, setError] = useState<string | null>(null);
 
   const goBack = () => setStep(Math.max(1, currentStep - 1));
-  const goNext = () => setStep(Math.min(STEPS.length, currentStep + 1));
+  const goNext = () => {
+    setStep(Math.min(STEPS.length, currentStep + 1));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleFinalSubmit = async (contact: ContactInput) => {
     setIsSubmitting(true);
