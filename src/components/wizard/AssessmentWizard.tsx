@@ -12,6 +12,7 @@ import { Step6Goals } from "./steps/Step6Goals";
 import { Step7Contact, type ContactInput } from "./steps/Step7Contact";
 import { useAssessmentStore } from "@/stores/assessmentStore";
 import { AlertCircle } from "lucide-react";
+import { GeneratingReport } from "./GeneratingReport";
 
 const STEPS = [
   { number: 1, label: "Basics" },
@@ -69,6 +70,8 @@ export function AssessmentWizard() {
       setIsSubmitting(false);
     }
   };
+
+  if (isSubmitting) return <GeneratingReport />;
 
   return (
     <div className="min-h-screen bg-[#0f0f1a] pt-24 pb-16">

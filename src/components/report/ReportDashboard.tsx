@@ -13,7 +13,7 @@ import { ReportCTA } from "./ReportCTA";
 import { LeadCaptureForm } from "./LeadCaptureForm";
 import { Badge } from "@/components/ui/badge";
 import { ProseText } from "./ProseText";
-import { Info, FileText } from "lucide-react";
+import { Info, FileText, Calendar, ExternalLink } from "lucide-react";
 import { format } from "date-fns";
 
 interface ReportDashboardProps {
@@ -81,6 +81,26 @@ export function ReportDashboard({
                 <span className="text-slate-500 text-sm">{formattedDate}</span>
               </div>
             </div>
+          </div>
+
+          {/* Top help banner */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-brand-500/25 bg-brand-900/20 px-5 py-4">
+            <div>
+              <p className="text-sm font-semibold text-white">Want help implementing any of this?</p>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Forma AI can assist with any of the services outlined in this report — from quick automations to full AI strategy.
+              </p>
+            </div>
+            <a
+              href={process.env.NEXT_PUBLIC_FORMA_AI_WEBSITE_URL ?? "https://formaai.info"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 shrink-0 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold px-4 py-2 transition-colors"
+            >
+              <Calendar className="h-4 w-4" />
+              Book a free call
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
           </div>
 
           {/* Executive Summary */}

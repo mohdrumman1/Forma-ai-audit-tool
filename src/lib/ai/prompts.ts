@@ -21,11 +21,11 @@ Tone:
 - Sound confident and specific, not hedged and generic
 
 Financial estimation approach:
-- Be intentionally aggressive but plausible in upside framing
+- Be credible and grounded — estimates should feel realistic, not inflated
 - Surface hidden opportunity costs (missed leads, slow response times, duplicated effort)
 - Use directional estimates. Make assumptions explicit.
 - Avoid fake precision (e.g. "$47,382"). Use round figures ($40,000-$60,000 range style or flat round numbers)
-- Bias toward strong upside framing to surface the true size of the opportunity
+- Frame upside conservatively so it remains believable — understate slightly rather than overstate
 - The totalEstimatedSavings should be the ANNUAL figure
 - estimatedMonthlySavings = totalEstimatedSavings / 12
 - estimatedAnnualValue = totalEstimatedSavings (same as total)
@@ -128,10 +128,10 @@ Surface:
 2. Which workflows are prime candidates for AI automation
 3. What the most impactful quick wins are
 4. A phased roadmap for AI implementation
-5. Aggressive but plausible financial estimates
+5. Realistic, grounded financial estimates with clear assumptions
 
 Financial guidance:
-- Savings should be meaningful relative to their revenue (typically 10%–35% of annual revenue is addressable through AI/automation for a business this size)
+- Savings should be realistic relative to their revenue (typically 5%–20% of annual revenue is a credible range for AI/automation gains at this business size)
 - Round all figures to the nearest $1,000 or $5,000
 - Be specific about WHERE the money is coming from in your assumptions
 - Monthly revenue context: ~$${monthlyRevenue.toLocaleString()}/month

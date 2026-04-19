@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import type { AIRecommendation } from "@/types/report";
 import { Badge } from "@/components/ui/badge";
 import { ScoreBar } from "./ScoreBar";
 import { cn } from "@/lib/utils";
 import { ProseText } from "./ProseText";
+import { getToolsForCategory } from "@/lib/toolRecommendations";
 
 interface RecommendationCardProps {
   recommendation: AIRecommendation;
@@ -22,6 +23,7 @@ const complexityMap = {
 export function RecommendationCard({ recommendation: rec, index }: RecommendationCardProps) {
   const [expanded, setExpanded] = useState(index < 2);
   const complexity = complexityMap[rec.implementationComplexity];
+  const tools = getToolsForCategory(rec.category);
 
   return (
     <div className="rounded-xl border border-white/10 bg-white/5 hover:border-brand-500/20 transition-all duration-300">
@@ -89,6 +91,33 @@ export function RecommendationCard({ recommendation: rec, index }: Recommendatio
                 <p className="text-xs text-brand-300 font-semibold mb-1">Why It Matters</p>
                 <ProseText text={rec.whyItMatters} className="text-xs text-slate-400" />
               </div>
+            </div>
+          </div>
+
+          {/* Tools to explore */}
+          <div className="mt-5 pt-4 border-t border-white/5">
+            <p className="text-xs text-slate-500 uppercase tracking-wide mb-3">Tools to explore</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              {tools.map((tool) => (
+                <a
+                  key={tool.name}
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 rounded-lg border border-white/8 bg-white/3 px-3 py-2.5 hover:border-brand-500/30 hover:bg-brand-500/5 transition-all duration-200 group"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="text-xs font-semibold text-white group-hover:text-brand-300 transition-colors">{tool.name}</span>
+                      {tool.badge && (
+                        <span className="text-[10px] font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded px-1 py-px">{tool.badge}</span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{tool.description}</p>
+                  </div>
+                  <ExternalLink className="h-3 w-3 text-slate-600 group-hover:text-brand-400 shrink-0 mt-0.5 transition-colors" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
